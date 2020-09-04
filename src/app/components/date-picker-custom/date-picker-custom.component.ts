@@ -19,6 +19,7 @@ export class DatePickerCustomComponent implements OnInit {
 
   @Output() outDate = new EventEmitter<string>();
   @Output() outTime = new EventEmitter<string>();
+  @Output() outDT = new EventEmitter<string>();
 
   dateConv: any;
 
@@ -60,5 +61,4 @@ export class DatePickerCustomComponent implements OnInit {
   convertDate() {
     return moment(this.date.value).format('DD/MM/yyyy');
   }
-
 }
