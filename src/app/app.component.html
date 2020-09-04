@@ -1,13 +1,9 @@
-<div class='ng-content'>
-  <mat-form-field>
-    <mat-label>Selecione uma data: </mat-label>
-    <input matInput [matDatepicker]="picker">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Selecine uma hora: </mat-label>
-    <input matInput type="time">
-  </mat-form-field>
+<!-- <div class='ng-content'>
+  <app-date-picker [dtValue]='dtPicker'>TESTE</app-date-picker>
+  <button mat-stroked-button color='primary' (click)='logValue()'>Log Data Ext</button>
+</div> -->
 
+<div class='ng-content'>
+  <app-date-picker-custom [dtValue]='dtValue'></app-date-picker-custom>
+  <button mat-stroked-button color='primary' (click)='logValue()'>Log Data Ext</button>
 </div>

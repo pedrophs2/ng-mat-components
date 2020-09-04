@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,10 +10,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { DatePickerComponent } from './components/date-picker/date-picker.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
+import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';
+import { DatePickerCustomComponent } from './components/date-picker-custom/date-picker-custom.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DatePickerComponent,
+    DatePickerCustomComponent
   ],
   imports: [
     BrowserModule,
@@ -22,9 +30,18 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatInputModule,
     MatIconModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule
   ],
-  providers: [MatDatepickerModule, MatNativeDateModule],
+  exports: [
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  providers: [MatDatepickerModule, MatNativeDateModule, {provide: OWL_DATE_TIME_LOCALE, useValue: 'pt-br'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

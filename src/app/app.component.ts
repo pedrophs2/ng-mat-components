@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import * as moment from 'moment';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'date-picker';
+  // Var
+  // title = 'date-picker';
+  // dtPicker = '03-09-2020 10:50:56';
+  // value = 'tst';
+
+  // Second Component Test
+  dtValue = '03-09-2020 10:50:56';
+
+  logValue() {
+    console.log(this.dtValue);
+  }
 }
