@@ -42,6 +42,7 @@ export class DatePickerCustomComponent implements OnInit {
 
   updateTime() {
     this.dtValue = this.convertDate() + ' ' + this.timeValue;
+
     this.emitDT();
   }
 
