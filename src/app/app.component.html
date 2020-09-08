@@ -1,9 +1,3 @@
-<!-- <div class='ng-content'>
-  <app-date-picker [dtValue]='dtPicker'>TESTE</app-date-picker>
-  <button mat-stroked-button color='primary' (click)='logValue()'>Log Data Ext</button>
-</div> -->
-
 <div class='ng-content'>
-  <app-date-picker-custom [dtValue]='dtValue'></app-date-picker-custom>
-  <button mat-stroked-button color='primary' (click)='logValue()'>Log Data Ext</button>
+  <date-picker [dtValue]='dtValue' (response)='getValue($event)'></date-picker>
 </div>

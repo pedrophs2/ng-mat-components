@@ -4,61 +4,55 @@ import * as moment from 'moment';
 import { FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-date-picker-custom',
+  // tslint:disable-next-line: component-selector
+  selector: 'date-picker',
   templateUrl: './date-picker-custom.component.html',
   styleUrls: ['./date-picker-custom.component.scss']
 })
 export class DatePickerCustomComponent implements OnInit {
 
-  float = 'always';
-
   dateValue: string;
   timeValue: string;
 
-  @Input() dtValue: string;
+  @Input() dtValue: any;
 
-  @Output() outDate = new EventEmitter<string>();
-  @Output() outTime = new EventEmitter<string>();
-  @Output() outDT = new EventEmitter<string>();
-
-  dateConv: any;
+  @Output() response = new EventEmitter<any>();
 
   date: any;
-  time: any;
 
   constructor(private adapter: DateAdapter<any>) { }
 
   ngOnInit(): void {
     this.adapter.setLocale('pt-br');
 
-    this.dataSplit();
+    this.responseSplit();
 
-    this.dateConv = moment(this.dateValue, 'DD-MM-YYYY').format('yyyy/MM/DD');
-    this.date = new FormControl(new Date(this.dateConv));
-
-    this.time = new FormControl(this.timeValue);
+    const dateConv = moment(this.dateValue, 'DD-MM-YYYY').format('yyyy/MM/DD');
+    this.date = new FormControl(new Date(dateConv));
   }
 
-  dataSplit() {
+  responseSplit() {
     this.dateValue = this.dtValue.substr(0, 10);
     this.timeValue = this.dtValue.substr(11, 8);
   }
 
-  logData() {
-    console.log(this.dateValue + ' ' + this.timeValue);
-  }
-
   updateDate() {
-    console.log(moment(this.date.value).format('DD/MM/yyyy'));
+    this.date.value = moment(this.date.value).format('DD/MM/yyyy');
     this.dtValue = this.convertDate() + ' ' + this.timeValue;
+    this.emitDT();
   }
 
   updateTime() {
-    console.log(this.timeValue);
     this.dtValue = this.convertDate() + ' ' + this.timeValue;
+    this.emitDT();
+  }
+
+  emitDT() {
+    this.dtValue = this.convertDate() + ' ' + this.timeValue;
+    this.response.emit(this.dtValue);
   }
 
   convertDate() {
-    return moment(this.date.value).format('DD/MM/yyyy');
+    return moment(this.date.value, 'DD/MM/yyyy').format('DD-MM-yyyy');
   }
 }
