@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  dtValue = '03-09-2020 10:50:56';
+  dtValue: string;
 
   getValue(dateTime) {
     this.dtValue = dateTime;

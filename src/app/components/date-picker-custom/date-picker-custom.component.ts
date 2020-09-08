@@ -11,13 +11,11 @@ import { FormControl } from '@angular/forms';
 })
 export class DatePickerCustomComponent implements OnInit {
 
-  dateValue: string;
-  timeValue: string;
-
   @Input() dtValue: any;
-
   @Output() response = new EventEmitter<any>();
 
+  dateValue: string;
+  timeValue: string;
   date: any;
 
   constructor(private adapter: DateAdapter<any>) { }
